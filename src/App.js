@@ -5,11 +5,14 @@ import SearchResults from './SearchResults';
 
 function App() {
   return (
-    <>
-      <RandomQuote />
-      <SearchForm />
-      <SearchResults />
-    </>
+    <main className='wrapper'>
+      <div className='container'>
+        <h1 className='title'>Quote Machine</h1>
+        <RandomQuote />
+        <SearchForm />
+        <SearchResults />
+      </div>
+    </main>
   );
 }
 

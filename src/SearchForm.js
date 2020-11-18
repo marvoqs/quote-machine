@@ -1,7 +1,11 @@
 import React from 'react';
 
 function SearchForm() {
-  return <div></div>;
+  return (
+    <section className='section'>
+      <input type='text' name='search' />
+    </section>
+  );
 }
 
 export default SearchForm;
