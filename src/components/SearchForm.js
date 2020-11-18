@@ -3,7 +3,7 @@ import React from 'react';
 function SearchForm() {
   return (
     <section className='section'>
-      <input type='text' name='search' />
+      <input className='search-input' type='text' name='search' autoComplete='off' />
     </section>
   );
 }

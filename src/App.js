@@ -1,7 +1,7 @@
 import React from 'react';
-import RandomQuote from './RandomQuote';
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
+import RandomQuote from './components/RandomQuote';
+import SearchForm from './components/SearchForm';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
