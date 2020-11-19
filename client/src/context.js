@@ -18,9 +18,8 @@ const AppProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const response = await axios.get('./api/quotes/random');
-      const newRandomQuote = response.data[0];
-      console.log(response);
-      if (newRandomQuote._id === randomQuote._id) {
+      const newRandomQuote = response.data;
+      if (newRandomQuote.id === randomQuote.id) {
         return getRandomQuote();
       }
       setRandomQuote(newRandomQuote);

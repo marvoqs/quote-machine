@@ -21,8 +21,18 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/random', async (req, res) => {
   try {
-    const randomQuote = await Quote.aggregate([{ $sample: { size: 1 } }]);
-    res.json(randomQuote);
+    const results = await Quote.aggregate([
+      { $sample: { size: 1 } },
+      {
+        $lookup: { from: 'authors', localField: 'author', foreignField: '_id', as: 'authorInfo' },
+      },
+    ]);
+    const quote = {
+      id: results[0]._id,
+      text: results[0].text,
+      author: results[0].authorInfo[0].name,
+    };
+    res.json(quote);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error.');
