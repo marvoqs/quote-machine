@@ -4,7 +4,9 @@
   "description": "quote machine with express and react",
   "main": "server.js",
   "dependencies": {
+    "config": "^3.3.2",
     "express": "^4.17.1",
+    "mongoose": "^5.10.15",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.0",
