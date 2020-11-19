@@ -1,19 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const QuoteSchema = new Schema({
-  text: {
-    type: String,
-    required: true,
-  },
-  author: {
-    type: String,
-  },
-});
-
-const Quote = mongoose.model('quote', QuoteSchema);
+const Quote = require('../../models/Quote');
 
 // @route   GET api/quotes
 // @desc    Get all quotes
