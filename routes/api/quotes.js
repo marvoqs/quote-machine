@@ -28,4 +28,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+// @route   GET api/quotes/random
+// @desc    Get random quote
+// @access  Public
+router.get('/random', async (req, res) => {
+  try {
+    const randomQuote = await Quote.aggregate([{ $sample: { size: 1 } }]);
+    res.json(randomQuote);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error.');
+  }
+});
+
 module.exports = router;
