@@ -5,11 +5,11 @@ body {
 
 .loader {
   margin: 0 auto;
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 0.5rem solid #f3f3f3; /* Light grey */
+  border-top: 0.5rem solid#31516f; /* Blue */
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 2rem;
+  height: 2rem;
   animation: spin 2s linear infinite;
 }
 

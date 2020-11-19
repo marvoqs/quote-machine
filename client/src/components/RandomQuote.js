@@ -7,7 +7,7 @@ function RandomQuote() {
   return (
     <section className='section'>
       {isLoading ? (
-        <div class='loader'></div>
+        <div className='loader'></div>
       ) : (
         <div>
           <p className='quote-text'>{randomQuote.text}</p>
