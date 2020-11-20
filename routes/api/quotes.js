@@ -8,7 +8,7 @@ const Quote = require('../../models/Quote');
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const quotes = await Quote.find().sort({ date: -1 });
+    const quotes = await Quote.find();
     res.json(quotes);
   } catch (err) {
     console.error(err.message);
@@ -21,17 +21,10 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/random', async (req, res) => {
   try {
-    const results = await Quote.aggregate([
-      { $sample: { size: 1 } },
-      {
-        $lookup: { from: 'authors', localField: 'author', foreignField: '_id', as: 'authorInfo' },
-      },
-    ]);
-    const quote = {
-      id: results[0]._id,
-      text: results[0].text,
-      author: results[0].authorInfo[0].name,
-    };
+    const results = await Quote.aggregate([{ $sample: { size: 1 } }]);
+    const { _id: id, text, author } = results[0];
+    const quote = { id, text, author };
+    console.log(quote);
     res.json(quote);
   } catch (err) {
     console.error(err.message);
