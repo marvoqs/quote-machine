@@ -6,12 +6,12 @@ function RandomQuote() {
 
   return (
     <section className='section'>
-      {isLoading ? (
+      {isLoading.randomQuote ? (
         <div className='loader'></div>
       ) : (
         <div>
           <p className='quote-text'>{randomQuote.text}</p>
-          <p className='quote-author'>&#8212; {randomQuote.author}</p>
+          <p className='quote-author'>&mdash; {randomQuote.author}</p>
           <div className='btn-container'>
             <button className='btn' onClick={getRandomQuote}>
               new quote

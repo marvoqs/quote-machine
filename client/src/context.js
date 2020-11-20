@@ -12,18 +12,34 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [randomQuote, setRandomQuote] = useState({ _id: 0, text: '', author: '' });
-  const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  // set is loading as an object with each element loading state
+  const [isLoading, setIsLoading] = useState({ randomQuote: false, results: false });
 
   const getRandomQuote = async () => {
-    setIsLoading(true);
+    setIsLoading({ ...isLoading, randomQuote: true });
     try {
       const response = await axios.get('./api/quotes/random');
       const newRandomQuote = response.data;
-      if (newRandomQuote.id === randomQuote.id) {
+      if (newRandomQuote._id === randomQuote._id) {
         return getRandomQuote();
       }
       setRandomQuote(newRandomQuote);
-      setIsLoading(false);
+      setIsLoading({ ...isLoading, randomQuote: false });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getResults = async () => {
+    setIsLoading({ ...isLoading, results: true });
+    try {
+      const response = await axios.get(`/api/quotes?s=${query}`);
+      const newResults = response.data;
+      setResults(newResults);
+      setIsLoading({ ...isLoading, results: false });
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +49,11 @@ const AppProvider = ({ children }) => {
     getRandomQuote();
   }, []);
 
-  return <AppContext.Provider value={{ isLoading, randomQuote, getRandomQuote }}>{children}</AppContext.Provider>;
+  useEffect(() => {
+    getResults();
+  }, [query]);
+
+  return <AppContext.Provider value={{ isLoading, randomQuote, getRandomQuote, query, setQuery, results }}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {

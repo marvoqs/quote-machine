@@ -1,9 +1,20 @@
 import React from 'react';
+import { useGlobalContext } from '../context';
 
 function SearchForm() {
+  const { query, setQuery } = useGlobalContext();
+
   return (
     <section className='section'>
-      <input className='search-input' type='text' name='search' autoComplete='off' placeholder='what are you looking for?' />
+      <input
+        className='search-input'
+        type='text'
+        name='search'
+        autoComplete='off'
+        placeholder='what are you looking for?'
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
     </section>
   );
 }

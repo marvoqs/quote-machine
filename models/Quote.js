@@ -12,4 +12,8 @@ const QuoteSchema = new Schema({
   },
 });
 
+QuoteSchema.index({
+  '$**': 'text',
+});
+
 module.exports = Quote = mongoose.model('quote', QuoteSchema);
