@@ -5,7 +5,7 @@ function SearchForm() {
   const { query, setQuery } = useGlobalContext();
 
   return (
-    <section className='section'>
+    <section className='box'>
       <input
         className='search-input'
         type='text'
