@@ -1,47 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-// const api = axios.create({
-//   baseURL: './api',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// });
-
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [randomQuote, setRandomQuote] = useState({ _id: 0, text: '', author: '' });
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
   // set is loading as an object with each element loading state
-  const [isLoading, setIsLoading] = useState({ randomQuote: false, results: false });
-
-  const getRandomQuote = async () => {
-    setIsLoading({ ...isLoading, randomQuote: true });
-    try {
-      const response = await axios.get('./api/quotes/random');
-      const newRandomQuote = response.data;
-      if (newRandomQuote._id === randomQuote._id) {
-        return getRandomQuote();
-      }
-      setRandomQuote(newRandomQuote);
-      setIsLoading({ ...isLoading, randomQuote: false });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(true);
 
   const getResults = async () => {
-    setIsLoading({ ...isLoading, results: true });
+    setIsLoading(true);
     try {
-      const response = await axios.get(`/api/quotes?s=${query}`);
+      const response = await axios.get(`./api/quotes?s=${query}`);
       const newResults = response.data;
       setResults(newResults);
-      setIsLoading({ ...isLoading, results: false });
+      setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

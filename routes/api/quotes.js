@@ -24,19 +24,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route   GET api/quotes/random
-// @desc    Get random quote
-// @access  Public
-router.get('/random', async (req, res) => {
-  try {
-    // get random result from db
-    const results = await Quote.aggregate([{ $sample: { size: 1 } }]);
-    // send the first (and only) result object
-    res.json(results[0]);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error.');
-  }
-});
-
 module.exports = router;
