@@ -23,14 +23,10 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getRandomQuote();
-  }, []);
-
-  useEffect(() => {
     getResults();
   }, [query]);
 
-  return <AppContext.Provider value={{ isLoading, randomQuote, getRandomQuote, query, setQuery, results }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ isLoading, query, setQuery, results }}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {

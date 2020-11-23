@@ -5,7 +5,7 @@ function SearchResults() {
   const { isLoading, results } = useGlobalContext();
   return (
     <section className='section'>
-      {isLoading.results ? (
+      {isLoading ? (
         <div className='loader'></div>
       ) : (
         results.map((item) => (
