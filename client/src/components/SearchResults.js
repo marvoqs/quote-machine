@@ -1,4 +1,5 @@
 import React from 'react';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 import { useGlobalContext } from '../context';
 
 function SearchResults() {
@@ -9,19 +10,25 @@ function SearchResults() {
         <div className='loader'></div>
       ) : (
         <div className='results-grid'>
-          {results.map((item) => (
-            <article key={item._id} className='box quote-box'>
-              <div>
-                <p className='quote-text'>{item.text}</p>
-                <p className='quote-author'>&mdash; {item.author}</p>
-              </div>
-              <div className='quote-buttons'>
-                <a class='twitter-share-button' href='https://twitter.com/intent/tweet?text=Hello%20world'>
-                  Tweet
-                </a>
-              </div>
-            </article>
-          ))}
+          {results.map((item) => {
+            const shareText = `${item.text} — ${item.author}`;
+            return (
+              <article key={item._id} className='box quote-box'>
+                <div>
+                  <p className='quote-text'>{item.text}</p>
+                  <p className='quote-author'>&mdash; {item.author}</p>
+                </div>
+                <div className='quote-buttons'>
+                  <TwitterShareButton title={shareText} url={'https://marekschwarz.eu'}>
+                    <TwitterIcon className='share-button' size={24} />
+                  </TwitterShareButton>
+                  <FacebookShareButton quote={shareText} url={'https://marekschwarz.eu'}>
+                    <FacebookIcon className='share-button' size={24} />
+                  </FacebookShareButton>
+                </div>
+              </article>
+            );
+          })}
         </div>
       )}
     </section>

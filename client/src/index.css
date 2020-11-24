@@ -74,6 +74,12 @@ body {
 }
 
 .quote-buttons {
+  text-align: center;
+}
+
+.share-button {
+  border-radius: 50%;
+  margin: 0 4px;
 }
 
 button,
