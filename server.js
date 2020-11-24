@@ -1,4 +1,5 @@
 const express = require('express');
+const parh = require('path');
 const connectDB = require('./config/db');
 
 const app = express();
