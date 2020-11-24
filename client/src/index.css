@@ -55,9 +55,7 @@ body {
 }
 
 .quote-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
 }
 
 .quote-text {
@@ -71,15 +69,17 @@ body {
   font-style: italic;
   text-align: right;
   font-size: 0.8rem;
+  margin: 0;
 }
 
 .quote-buttons {
-  text-align: center;
+  position: absolute;
+  bottom: 1.5rem;
 }
 
 .share-button {
   border-radius: 50%;
-  margin: 0 4px;
+  margin-right: 4px;
 }
 
 button,
