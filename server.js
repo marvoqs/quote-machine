@@ -6,6 +6,9 @@ const app = express();
 // connect database
 connectDB();
 
+// serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 // init middleware
 app.use(express.json());
 
