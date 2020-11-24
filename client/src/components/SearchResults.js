@@ -19,10 +19,10 @@ function SearchResults() {
                   <p className='quote-author'>&mdash; {item.author}</p>
                 </div>
                 <div className='quote-buttons'>
-                  <TwitterShareButton title={shareText} url={'https://marekschwarz.eu'}>
+                  <TwitterShareButton title={shareText} url={'https://ms-quotemachine.herokuapp.com/'}>
                     <TwitterIcon className='share-button' size={24} />
                   </TwitterShareButton>
-                  <FacebookShareButton quote={shareText} url={'https://marekschwarz.eu'}>
+                  <FacebookShareButton quote={shareText} url={'https://ms-quotemachine.herokuapp.com/'}>
                     <FacebookIcon className='share-button' size={24} />
                   </FacebookShareButton>
                 </div>
