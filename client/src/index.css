@@ -121,3 +121,9 @@ input:focus {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}
